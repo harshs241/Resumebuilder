@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        section {
+            margin-bottom: 20px;
+        }
+        label {
+            margin-top: 10px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .hidden {
+            display: none;
+        }
+        .container {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        @media (max-width: 600px) {
+            main {
+                margin: 10px;
+                padding: 10px;
+            }
+            header {
+                padding: 10px;
+            }
+            button {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Resume Builder</h1>
+    </header>
+    <main>
+        <form id="resume-form">
+            <section>
+                <h2>Personal Information</h2>
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+                
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" required>
+                
+                <label for="github">GitHub:</label>
+                <input type="url" id="github">
+            </section>
+            
+            <section>
+                <h2>Education</h2>
+                <label for="education">Education:</label>
+                <textarea id="education" rows="4" required></textarea>
+            </section>
+            
+            <section>
+                <h2>Skills</h2>
+                <label for="skills">Skills:</label>
+                <textarea id="skills" rows="4" required></textarea>
+            </section>
+            
+            <section>
+                <h2>Experience</h2>
+                <label for="experience">Experience:</label>
+                <textarea id="experience" rows="4" required></textarea>
+            </section>
+            
+            <button type="submit">Generate Resume</button>
+        </form>
+        
+        <div id="resume-preview" class="hidden">
+            <div class="container">
+                <h1 id="preview-name"></h1>
+                
+                <h2>Personal Information</h2>
+                <p id="preview-email"></p>
+                <p id="preview-phone"></p>
+                <p id="preview-github"></p>
+                
+                <h2>Education</h2>
+                <p id="preview-education"></p>
+                
+                <h2>Skills</h2>
+                <p id="preview-skills"></p>
+                
+                <h2>Experience</h2>
+                <p id="preview-experience"></p>
+            </div>
+        </div>
+    </main>
+    
+    <script>
+        document.getElementById('resume-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const github = document.getElementById('github').value;
+            const education = document.getElementById('education').value;
+            const skills = document.getElementById('skills').value;
+            const experience = document.getElementById('experience').value;
+            
+            // Populate resume preview
+            document.getElementById('preview-name').textContent = name;
+            document.getElementById('preview-email').textContent = `Email: ${email}`;
+            document.getElementById('preview-phone').textContent = `Phone: ${phone}`;
+            document.getElementById('preview-github').textContent = `GitHub: ${github}`;
+            document.getElementById('preview-education').textContent = education;
+            document.getElementById('preview-skills').textContent = skills;
+            document.getElementById('preview-experience').textContent = experience;
+            
+            // Show resume preview
+            document.getElementById('resume-preview').classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>
